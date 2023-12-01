@@ -27,7 +27,7 @@ exports.auth=async(req,res,next)=>{
         next();
 
     }catch(error){
-        return res.status(500).josn({
+        return res.status(500).json({
             success:false,
             message:"Something Went Wrong while Validating Token"
         })
