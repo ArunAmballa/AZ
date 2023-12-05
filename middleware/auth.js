@@ -75,5 +75,26 @@ exports.isInstructor=async(req,res,next)=>{
             message:"Something went Wrong while Authorizig"
         })
     }
-    next();
+}
+
+exports.isAdmin=async(req,res,next)=>{
+
+    try{
+
+        if (req.user.accountType!=="Admin"){
+            return res.status(401).json({
+                success:false,
+                message:"This is a Protected Route for Admin"
+            })
+        }
+        next();
+
+    }catch(error)
+    {
+        console.log(error);
+        return res.status(500).json({
+            success:false,
+            message:"Something went Wrong while Authorizing"
+        })
+    }
 }

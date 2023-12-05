@@ -26,9 +26,15 @@ const userSchema=new mongoose.Schema(
         },
         accountType:{
             type:String,
-            enum:["Student","Instructor"],
+            enum:["Student","Instructor","Admin"],
             required:true,
-        }
+        },
+        courses:[
+            {
+                type:mongoose.Schema.Types.ObjectId,
+                ref:"Course"
+            }
+        ]
     }
 
 );
